@@ -1,0 +1,133 @@
+src/issue6158.dfy(21,16): Warning: ensures clause proved using contradictory assumptions
+   |
+21 |         ensures F.Length == |A'| + 1
+   |                 ^^^^^^^^^^^^^^^^^^^^
+
+src/issue6158.dfy(22,16): Warning: ensures clause proved using contradictory assumptions
+   |
+22 |         ensures F.Length > 0
+   |                 ^^^^^^^^^^^^
+
+src/issue6158.dfy(23,33): Warning: ensures clause proved using contradictory assumptions
+   |
+23 |         ensures F.Length > 0 ==> false
+   |                                  ^^^^^
+
+src/issue6158.dfy(24,16): Warning: ensures clause proved using contradictory assumptions
+   |
+24 |         ensures false
+   |                 ^^^^^
+
+src/issue6158.dfy(39,25): Warning: proved using contradictory assumptions: function precondition satisfied
+   |
+39 |             var j := i + lsb(i);
+   |                          ^^^^^^
+
+src/issue6158.dfy(39,29): Warning: proved using contradictory assumptions: value always satisfies the subset constraints of 'nat'
+   |
+39 |             var j := i + lsb(i);
+   |                              ^
+
+src/issue6158.dfy(40,19): Warning: proved using contradictory assumptions: target object is never null
+   |
+40 |             if j < F.Length {
+   |                    ^^^^^^^^
+
+src/issue6158.dfy(41,16): Warning: proved using contradictory assumptions: array is never null
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                 ^
+
+src/issue6158.dfy(41,16): Warning: proved using contradictory assumptions: an array element is in the enclosing context's modifies clause
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                 ^^^^
+
+src/issue6158.dfy(41,16): Warning: proved using contradictory assumptions: index in range
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                 ^^^^
+
+src/issue6158.dfy(41,24): Warning: proved using contradictory assumptions: array is never null
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                         ^
+
+src/issue6158.dfy(41,24): Warning: proved using contradictory assumptions: index in range
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                         ^^^^
+
+src/issue6158.dfy(41,31): Warning: proved using contradictory assumptions: array is never null
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                                ^
+
+src/issue6158.dfy(41,31): Warning: proved using contradictory assumptions: index in range
+   |
+41 |                 F[j] := F[j] + F[i];
+   |                                ^^^^
+
+src/issue6158.dfy(42,16): Warning: proved using contradictory assumptions: assertion always holds. (Use the `{:contradiction}` attribute on the `assert` statement to silence.)
+   |
+42 |                 assert F[j] == A[j - 1];
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+src/issue6158.dfy(42,23): Warning: proved using contradictory assumptions: array is never null
+   |
+42 |                 assert F[j] == A[j - 1];
+   |                        ^
+
+src/issue6158.dfy(42,23): Warning: proved using contradictory assumptions: index in range
+   |
+42 |                 assert F[j] == A[j - 1];
+   |                        ^^^^
+
+src/issue6158.dfy(42,31): Warning: proved using contradictory assumptions: index in range
+   |
+42 |                 assert F[j] == A[j - 1];
+   |                                ^^^^^^^^
+
+src/issue6158.dfy(47,15): Warning: proved using contradictory assumptions: target object is never null
+   |
+47 |         assert F.Length > 0 ==> false;
+   |                ^^^^^^^^
+
+src/issue6158.dfy(47,15): Warning: unnecessary (or partly unnecessary) assert statement
+   |
+47 |         assert F.Length > 0 ==> false;
+   |                ^^^^^^^^^^^^^^^^^^^^^^
+
+src/issue6158.dfy(47,32): Warning: proved using contradictory assumptions: assertion always holds. (Use the `{:contradiction}` attribute on the `assert` statement to silence.)
+   |
+47 |         assert F.Length > 0 ==> false;
+   |                                 ^^^^^
+
+src/issue6158.dfy(52,12): Warning: ensures clause proved using contradictory assumptions
+   |
+52 |     ensures false
+   |             ^^^^^
+
+src/issue6158.dfy(56,4): Warning: proved using contradictory assumptions: assertion always holds. (Use the `{:contradiction}` attribute on the `assert` statement to silence.)
+   |
+56 |     assert 0 == 1;
+   |     ^^^^^^^^^^^^^^
+
+src/issue6158.dfy(58,4): Warning: proved using contradictory assumptions: assertion always holds. (Use the `{:contradiction}` attribute on the `assert` statement to silence.)
+   |
+58 |     assert FT.N == 69;
+   |     ^^^^^^^^^^^^^^^^^^
+
+src/issue6158.dfy(58,11): Warning: proved using contradictory assumptions: target object is never null
+   |
+58 |     assert FT.N == 69;
+   |            ^^^^
+
+src/issue6158.dfy(59,10): Warning: proved using contradictory assumptions: target object is never null
+   |
+59 |     print FT.N; // Actually prints 1
+   |           ^^^^
+
+
+Dafny program verifier finished with 5 verified, 0 errors
+Compilation failed because warnings were found and --allow-warnings is false

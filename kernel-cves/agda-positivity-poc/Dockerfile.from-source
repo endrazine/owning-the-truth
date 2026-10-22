@@ -1,0 +1,48 @@
+# ============================================================
+#  Build Agda PoC with a specific version (built from Hackage)
+#
+#  Usage:
+#    docker build -f Dockerfile.from-source \
+#      --build-arg AGDA_VERSION=2.8.0 \
+#      -t agda-positivity-poc-2.8.0 .
+#
+#  WARNING: Building Agda from source takes 20-40 minutes.
+#           The Docker layer is cached after the first build.
+# ============================================================
+
+FROM haskell:9.8.4-slim
+
+ARG AGDA_VERSION=2.8.0
+
+LABEL maintainer="endrazine@securityfocus.com"
+LABEL description="PoC: Agda positivity checker (version ${AGDA_VERSION})"
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        zlib1g-dev \
+        libncurses5-dev \
+        pkg-config \
+        bash \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Agda from Hackage (this is the slow step — cached by Docker)
+RUN cabal update && \
+    cabal install Agda-${AGDA_VERSION} \
+      --constraint="Agda ==${AGDA_VERSION}" \
+      -j$(nproc) \
+      --install-method=copy \
+      --installdir=/usr/local/bin && \
+    # Make Agda data files findable
+    DATADIR=$(find /root/.cabal/store -name "Agda-${AGDA_VERSION}*" -type d | head -1) && \
+    if [ -d "$DATADIR/share" ]; then \
+        ln -sf "$DATADIR/share" /usr/local/share/Agda; \
+    fi
+
+# Copy PoC files
+RUN mkdir -p /poc
+COPY Exploit.agda run.sh /poc/
+RUN chmod +x /poc/run.sh
+
+WORKDIR /poc
+
+ENTRYPOINT ["/poc/run.sh"]

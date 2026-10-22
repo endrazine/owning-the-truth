@@ -1,0 +1,32 @@
+* Warning 241 at /opt/fstar/fstar/lib/fstar/ulib/Prims.fst(0,0-0,0):
+  - Unable to load /opt/fstar/fstar/lib/fstar/ulib.checked/Prims.fst.checked
+    since checked file /opt/fstar/fstar/lib/fstar/ulib.checked/Prims.fst.checked
+    is corrupt; will recheck /opt/fstar/fstar/lib/fstar/ulib/Prims.fst
+    (suppressing this warning for further modules)
+
+* Warning 271 at /opt/fstar/fstar/lib/fstar/ulib/FStar.UInt.fsti(435,8-435,51):
+  - Pattern uses these theory symbols or terms that should not be in an SMT
+    pattern:
+      Prims.op_Minus
+
+* Error 19 at /poc/src/NoNormalization.fst(11,2-11,24):
+  - Subtyping check failed
+  - Expected type Prims.squash Prims.l_False
+    got type
+      Prims.squash (FStar.Stubs.Reflection.V2.Builtins.inspect_sigelt (FStar.Stubs.Reflection.V2.Builtins.pack_sigelt
+                sv) ==
+          sv)
+  - The SMT solver could not prove the query.
+  - Failed to prove: Prims.l_False
+  - In context:
+      uu___: Prims.unit
+      ~(Unk? NoNormalization.sv)
+      FStar.Stubs.Reflection.V2.Builtins.inspect_sigelt (FStar.Stubs.Reflection.V2.Builtins.pack_sigelt
+            NoNormalization.sv) ==
+      NoNormalization.sv
+      FStar.Stubs.Reflection.V2.Builtins.inspect_sigelt (FStar.Stubs.Reflection.V2.Builtins.pack_sigelt
+            NoNormalization.sv) ==
+      NoNormalization.sv
+  - See also /poc/src/NoNormalization.fst(10,19-10,24)
+
+1 error was reported (see above)

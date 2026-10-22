@@ -1,0 +1,7 @@
+src/negative_control.dfy(2,2): Error: assertion might not hold
+  |
+2 |   assert false;
+  |   ^^^^^^^^^^^^^
+
+
+Dafny program verifier finished with 0 verified, 1 error

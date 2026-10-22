@@ -1,0 +1,4 @@
+test,exit,classification
+SigeltInductive,0,accepted
+NoLemma,1,expected_proof_rejection
+NoNormalization,1,expected_proof_rejection

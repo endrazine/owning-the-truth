@@ -1,0 +1,32 @@
+# Build artifacts
+undecidable/undecidable
+undecidable/*.o
+
+# Rocq/Lean build outputs
+**/*.vo
+**/*.vos
+**/*.vok
+**/*.glob
+**/.lia.cache
+**/.v.d
+**/*.aux
+**/._CoqProject
+**/.lake/
+**/.cache/
+
+# Docker build cache
+**/docker-context/
+
+# Editor and OS
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+
+# Submission artefacts to exclude from the clean tree
+paper.txt.old
+paper.txt.backup
+paper.txt.backup2
+notes.txt
+und

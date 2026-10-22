@@ -1,0 +1,3 @@
+method Main() {
+  assert false;
+}

@@ -1,0 +1,6 @@
+module NRA_v2
+  use real.RealInfix
+  goal wrong:
+    forall a b:real.
+      0.0 <. b /\ (0.0 -. a) = b *. (a +. b) /\ 1.0 = a*.a +. b*.b -> false
+end

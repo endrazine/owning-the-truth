@@ -1,0 +1,8 @@
+session "NBE_PoC" = HOL +
+  description "
+    Proof of False via NBE normalization soundness bug.
+    TYPE(T) arguments are generalized to TYPE(?'a) by the normalizer,
+    allowing equating terms with different type-dependent values.
+  "
+  theories
+    Scratch

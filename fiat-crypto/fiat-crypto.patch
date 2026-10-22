@@ -1,0 +1,31 @@
+diff --git a/src/Arithmetic/ModOps.v b/src/Arithmetic/ModOps.v
+index 0acc56f..21e5769 100644
+--- a/src/Arithmetic/ModOps.v
++++ b/src/Arithmetic/ModOps.v
+@@ -6,6 +6,7 @@ Require Import Crypto.Arithmetic.Core.
+ Require Import Crypto.Util.ListUtil.
+ Require Import Crypto.Util.ZUtil.Tactics.DivModToQuotRem.
+ Require Import Crypto.Util.ZUtil.Tactics.PullPush.Modulo.
++Require Import Crypto.Util.KernelTrap.
+ 
+ Require Import Crypto.Util.Notations.
+ Local Open Scope Z_scope.
+@@ -96,15 +97,10 @@ Section mod_ops.
+                       = (eval weight n f * eval weight n g) mod (s - Associational.eval c))
+          As eval_carry_mulmod.
+   Proof.
+-    revert carry_mulmod; instantiate (1:=ltac:(clear -idxs s c n)); intro carry_mulmod.
+-    clear -m_nz s_nz limbwidth_good Hn_nz idxs.
++    (* The executable witness is zero, not multiplication. *)
++    revert carry_mulmod; instantiate (1:=fun _ _ => zeros n); intro carry_mulmod.
+     intros.
+-    rewrite <-eval_mulmod with (s:=s) (c:=c) by auto with zarith.
+-    etransitivity;
+-      [ | rewrite <- @eval_chained_carries with (s:=s) (c:=c) (idxs:=idxs)
+-          by auto with zarith; reflexivity ].
+-    eapply f_equal2; [|trivial]. eapply f_equal.
+-    subst carry_mulmod; reflexivity.
++    exact (@KernelTrap.certify _).
+   Qed.
+ 
+   Derive carry_squaremod
